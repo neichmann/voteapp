@@ -1,4 +1,5 @@
 import React from "react";
+import ChoiceBar from "./ChoiceBar"
 
 export default function VotingComponent({ vote }) {
 
@@ -13,6 +14,15 @@ export default function VotingComponent({ vote }) {
                 </h1>
                 <div
                     className="Description Emphasis">{vote.description}</div>
+                </div>
+                <div>
+                    {vote.choices.map(choice => (
+                        <ChoiceBar
+                            key={choice.id}
+                            title={choice.title}
+                            percent={choice.count * (100 / totalVotes)}
+                        />
+                    ))}
                 </div>
         </div>
     );

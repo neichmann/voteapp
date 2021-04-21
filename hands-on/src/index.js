@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ChoiceBar from "./components/ChoiceBar";
 import "./index.css";
 
-import VotingComponent from "components/VotingComponent";
+import VotingComponent from "./components/VotingComponent";
 
 //Sample data
 
