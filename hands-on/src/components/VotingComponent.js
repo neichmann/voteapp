@@ -1,9 +1,22 @@
 import React from "react";
 import ChoiceBar from "./ChoiceBar"
 
-export default function VotingComponent({ vote }) {
+export default function VotingComponent({ vote: initialVote }) {
+
+    const [vote, setVote] = React.useState(initialVote);
 
     const totalVotes = vote.choices.reduce((prev, curr) => prev + curr.count, 0);
+
+    function registerChoice(choice) {
+        //bestehendes vote-Objekt und alle Choices
+        setVote({
+            ...vote,
+            choices: vote.choices.map(c => 
+                choice.id !== c.id ?
+                    c : { ...choice, count: choice.count + 1}
+            )
+        });
+    }
 
     return (
         <div className="Row VotingRow Spacer">
@@ -21,6 +34,8 @@ export default function VotingComponent({ vote }) {
                             key={choice.id}
                             title={choice.title}
                             percent={choice.count * (100 / totalVotes)}
+                            count={choice.count}
+                            onClickHandler={() => registerChoice(choice)}
                         />
                     ))}
                 </div>
