@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function App() {
+export default function App({children}) {
     return (
         <div className="Background">
             <div className="Header">
@@ -11,7 +11,7 @@ export default function App() {
 
             <div className="Main">
                 <div className="Container">
-                    { /*Hier wird reingerendert */ }
+                    { children }
                 </div>
             </div>
         </div>
